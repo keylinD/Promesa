@@ -38,19 +38,37 @@ const allLi = document.getElementsByTagName("li");
 
 Promise.all( // esto devuelve un arreglo de promesas y ejecutarlas a la vez, se resuelve cuansdo terminan todas las promesas.
   [
-      animateElement(allLi[1], -200, 600, 8000),
-      animateElement(allLi[0], -200, 600, 4000)
+      // animateElement(allLi[1], -200, 600, 8000),
+      // animateElement(allLi[0], -200, 600, 4000)
+      animateElement(allLi[1], 0 , 800 ,4000),
+      animateElement(allLi[0], 0 , 800 ,4000)
   ]
 ).then((results)=>{
   console.log("Todas las animaciones terminaron");
   return Promise.all( // esto devuelve un arreglo de promesas y ejecutarlas a la vez, se resuelve cuansdo terminan todas las promesas.
       [
-          animateElement(allLi[1], 600, -200, 8000),
-          animateElement(allLi[0], 600, -200, 4000)
+          // animateElement(allLi[1], 600, -200, 8000),
+          // animateElement(allLi[0], 600, -200, 4000)
+          animateElement(allLi[1], 0, 400, 4000),
+          animateElement(allLi[0], 110, 510, 4000)
       ]
   )
 }).then(()=>{
   console.log("Terminaron las animaciones de vuelta");
+  return Promise.all(
+    [
+    animateElement(allLi[1],800 , 0 , 4000),
+    animateElement(allLi[0], 800 , 0 , 4000)
+    ]
+  )
+}).then(()=>{
+  console.log("Terminaron las animaciones ");
+  return Promise.all(
+    [
+    animateElement(allLi[1],510 , 110 , 4000),
+    animateElement(allLi[0], 400 , 0 , 4000)
+    ]
+  )
 }).catch(()=>{
   console.log("Falló la animación");
 });
